@@ -1177,7 +1177,7 @@
           "expr": "irate(node_disk_read_bytes_total{instance=~'$node', job=~'$job'}[5m]) or irate(node_disk_sectors_read{instance=~'$node', job=~'$job'}[5m]) * 512",
           "interval": "",
           "intervalFactor": 4,
-          "legendFormat": "{{device}}_read",
+          "legendFormat": "{{`{{device}}`}}_read",
           "refId": "B",
           "step": 2400
         },
