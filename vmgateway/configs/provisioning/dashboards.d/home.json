@@ -1738,8 +1738,8 @@
         "allFormat": "glob",
         "current": {
           "selected": false,
-          "text": "vmgateway:9100",
-          "value": "vmgateway:9100"
+          "text": "{{ env "MIAS_DOMAIN" }}:9100",
+          "value": "{{ env "MIAS_DOMAIN" }}:9100"
         },
         "datasource": {
           "type": "prometheus",

@@ -105,7 +105,7 @@ services:
   #
   # vmagent is a bundled multi-service image that scrapes metrics exported from node-exporter and then pushes them to the remote victory-metrics gateway node
   vmagent:
-    image: keith/mias-agent:v0.0.2
+    image: keith/mias-agent-host:v0.0.1
     volumes:
       - vmagent_data:/opt/vmagent/storage
       - /proc:/host/proc:ro
@@ -114,6 +114,7 @@ services:
     environment:
       # We replace the "job" value to the friendlier node hostname so that it appears as such in the Grafana dashboard
       VMAGENT_JOB: "{{.Node.Hostname}}"
+      MIAS_DOMAIN: ${MIAS_DOMAIN}
     depends_on:
       - vmgateway
     networks:
@@ -139,6 +140,7 @@ configs:
     file: ./vmgateway/configs/provisioning/dashboards/automatic.yml
     external: false
   gfhomedashboard:
+    template_driver: golang
     file: ./vmgateway/configs/provisioning/dashboards.d/home.json
     external: false
   gfdatasource:
