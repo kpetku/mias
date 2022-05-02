@@ -29,6 +29,7 @@ services:
       GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: "/etc/grafana/provisioning/dashboards.d/home.json"
       GF_SERVER_DOMAIN: "${MAIS_DOMAIN}"
       GF_SERVER_ROOT_URL: "https://${MIAS_DOMAIN}"
+      MIAS_DOMAIN: ${MIAS_DOMAIN}
     secrets:
       - gf_admin_password
     configs:
@@ -137,6 +138,7 @@ configs:
     file: ./vmgateway/configs/prometheus.yml.tmpl
     external: false
   gfautomaticdashboard:
+    template_driver: golang
     file: ./vmgateway/configs/provisioning/dashboards/automatic.yml
     external: false
   gfhomedashboard:

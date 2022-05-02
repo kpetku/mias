@@ -4,6 +4,6 @@ datasources:
     type: prometheus
     uid: prometheus
     access: proxy
-    url: http://vmgateway:8428
+    url: http://{{ env "MIAS_DOMAIN" }}:8428
     jsonData:
       manageAlerts: false
