@@ -146,6 +146,7 @@ configs:
     file: ./vmgateway/configs/provisioning/dashboards.d/home.json
     external: false
   gfdatasource:
+    template_driver: golang
     file: ./vmgateway/configs/provisioning/datasources/automatic.yml
     external: false
   caddy:
