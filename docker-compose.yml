@@ -2,11 +2,9 @@ version: '3.8'
 
 networks:
   monitoring:
-    driver: overlay
-    driver_opts:
-      encrypted: ""
+    external:
+      name: "host"
     attachable: true
-    name: monitoring
 
 volumes:
   vmagent_data:
@@ -82,9 +80,6 @@ services:
   # caddyserver is a reverse proxy featuring automatic letsencrypt certificates.  It is used to expose the Grafana dashboard to the Internet.
   caddy:
     image: caddy:latest
-    ports:
-      - "80:80"
-      - "443:443"
     volumes:
       - caddy_data:/data
       - caddy_config:/config
